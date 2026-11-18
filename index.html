@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Knižnica</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <nav class="topbar">
+        <a href="#">Knižnica (SQL)</a>
+    </nav>
+    <main class="card">
+        <h1>Správa kníh</h1>
+        <form id="formKniha">
+            <input type="text" id="nazov" placeholder="Názov" required>
+            <input type="text" id="autor" placeholder="Autor" required>
+            <input type="number" id="rok" placeholder="Rok" required>
+            <input type="number" id="cena" step="0.01" min="0" placeholder="Cena (€)" required>
+            <button type="submit">Pridať knihu</button>
+        </form>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Názov</th>
+                        <th>Autor</th>
+                        <th>Rok</th>
+                        <th>Cena (€)</th>
+                        <th>Akcia</th>
+                    </tr>
+                </thead>
+                <tbody id="zoznam"></tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
