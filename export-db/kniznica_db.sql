@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2026 at 11:19 AM
+-- Generation Time: Nov 23, 2026 at 11:26 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,10 +43,29 @@ INSERT INTO `knihy` (`id`, `nazov`, `autor`, `rok`, `cena`) VALUES
 (1, '1984', 'Orwel', 1948, 21.90),
 (3, ' A Clockwork Orange ', 'Burgess', 1962, 55.00),
 (4, 'Flotsam', 'Remarque', 1939, 34.00),
-(8, 'Matematika 1 ', 'Zahonova', 2006, 0.00),
-(9, 'The Creative Act', 'rubin', 2023, 0.00),
-(10, 'The Picture of Dorian Gray', 'Oscar Wilde', 1890, 0.00),
-(11, 'Eugene Onegin', 'Pushkin', 1825, 0.00);
+(8, 'Matematika 1 ', 'Zahonova', 2006, 18.00),
+(9, 'The Creative Act', 'rubin', 2023, 16.00),
+(10, 'The Picture of Dorian Gray', 'Oscar Wilde', 34, 0.00),
+(11, 'Eugene Onegin', 'Pushkin', 1825, 17.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pouzivatelia`
+--
+
+CREATE TABLE `pouzivatelia` (
+  `id` int(11) NOT NULL,
+  `meno` varchar(100) NOT NULL,
+  `heslo` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pouzivatelia`
+--
+
+INSERT INTO `pouzivatelia` (`id`, `meno`, `heslo`) VALUES
+(1, 'wwwww', 'e570ecd1cb44163bf3a33a0840be4e7e:9653d2126f00cd96c8e2c77c47c0fed67cc062aef78f4b97d65d511a89e2992797218147174bf8fac4522306f03c01c3e5becbcbd266c9576f4c1e387c651098');
 
 --
 -- Indexes for dumped tables
@@ -59,6 +78,13 @@ ALTER TABLE `knihy`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pouzivatelia`
+--
+ALTER TABLE `pouzivatelia`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `meno` (`meno`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -67,6 +93,12 @@ ALTER TABLE `knihy`
 --
 ALTER TABLE `knihy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `pouzivatelia`
+--
+ALTER TABLE `pouzivatelia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

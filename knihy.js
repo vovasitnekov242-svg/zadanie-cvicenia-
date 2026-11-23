@@ -122,4 +122,17 @@ document.getElementById("formKniha").addEventListener("submit", e => {
     });
 });
 
-document.addEventListener("DOMContentLoaded", nacitajKnihy);
+document.addEventListener("DOMContentLoaded", () => {
+    nacitajKnihy();
+
+    const prihlaseny = localStorage.getItem("prihlasenyPouzivatel");
+    const navLogin = document.getElementById("navLogin");
+    if (prihlaseny && navLogin) {
+        navLogin.textContent = `Odhlásiť (${prihlaseny})`;
+        navLogin.onclick = e => {
+            e.preventDefault();
+            localStorage.removeItem("prihlasenyPouzivatel");
+            window.location.reload();
+        };
+    }
+});
