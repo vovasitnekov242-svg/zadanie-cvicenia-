@@ -21,6 +21,28 @@ function nacitajKnihy() {
                 };
                 akcie.appendChild(btnVymazat);
 
+                const btnUpravit = document.createElement("button");
+                btnUpravit.textContent = "Upraviť";
+                btnUpravit.onclick = () => {
+                    const nazov = prompt("Nový názov:", kniha.nazov);
+                    if (!nazov || nazov.trim() === "") return;
+                    const autor = prompt("Nový autor:", kniha.autor);
+                    if (!autor || autor.trim() === "") return;
+                    const rokVstup = prompt("Nový rok:", kniha.rok);
+                    const rok = Number(rokVstup);
+                    if (!rokVstup || !Number.isInteger(rok)) return alert("Neplatný rok");
+                    const cenaVstup = prompt("Nová cena (€):", kniha.cena);
+                    const cena = Number(String(cenaVstup).replace(",", "."));
+                    if (!cenaVstup || !Number.isFinite(cena)) return alert("Neplatná cena");
+
+                    fetch(`/api/knihy/${kniha.id}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ nazov, autor, rok, cena })
+                    }).then(() => nacitajKnihy());
+                };
+                akcie.appendChild(btnUpravit);
+
                 const btnNazov = document.createElement("button");
                 btnNazov.textContent = "Zmeniť názov";
                 btnNazov.onclick = () => {
